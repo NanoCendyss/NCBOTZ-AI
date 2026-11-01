@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="NCBOTZ AI - Hybrid Neural & Cloud API System" />
+    <title>NCBOTZ AI</title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" class="ghost-button" id="menu-button" aria-label="Buka riwayat" aria-controls="sidebar">Riwayat</button>
+          <div class="brand">
+            <span class="brand-mark">NC</span>
+            <span class="brand-name">NCBOTZ AI</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <span class="mode-badge" id="mode-badge">Offline</span>
+          <button type="button" class="ghost-button" id="canvas-toggle">Canvas</button>
+          <button type="button" class="ghost-button" id="settings-button" aria-label="Pengaturan"><span class="label-full">Pengaturan</span><span class="label-short">Atur</span></button>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar" id="sidebar">
+          <button type="button" class="primary-button full" id="new-chat">Percakapan baru</button>
+          <p class="sidebar-title">Riwayat</p>
+          <ul class="conversation-list" id="conversation-list"></ul>
+        </aside>
+        <div class="scrim" id="scrim" hidden></div>
+
+        <main class="chat">
+          <div class="roles" id="roles" role="group" aria-label="Peran AI"></div>
+          <div class="messages" id="messages" aria-live="polite"></div>
+          <div class="toast" id="toast" role="status" hidden></div>
+          <form class="composer" id="composer">
+            <textarea id="input" rows="1" placeholder="Tanya apa saja, atau minta dibuatkan aplikasi..." aria-label="Pesan"></textarea>
+            <button type="submit" class="primary-button" id="send-button">Kirim</button>
+          </form>
+          <p class="footer">NCBOTZ AI — Hybrid Neural & Cloud API System | Copyright Nano Cendys Project ©2016.</p>
+        </main>
+
+        <section class="canvas" id="canvas" hidden>
+          <div class="canvas-head">
+            <span>Code Canvas</span>
+            <button type="button" class="ghost-button" id="canvas-close">Tutup</button>
+          </div>
+          <p class="canvas-empty" id="canvas-empty">Belum ada kode. Minta NCBOTZ AI membuatkan aplikasi web.</p>
+          <iframe id="canvas-frame" title="Pratinjau kode" sandbox="allow-scripts" hidden></iframe>
+        </section>
+      </div>
+
+      <dialog class="dialog" id="settings-dialog">
+        <form method="dialog" class="settings-form" id="settings-form">
+          <h2>Pengaturan AI</h2>
+          <p class="muted">Kunci API hanya disimpan di browser ini. Kosongkan kunci jika ingin memakai mode offline saja.</p>
+          <label class="field">
+            <span>Kunci Google Gemini API</span>
+            <input type="password" id="gemini-key" autocomplete="off" />
+          </label>
+          <label class="field">
+            <span>Kunci Groq Cloud API</span>
+            <input type="password" id="groq-key" autocomplete="off" />
+          </label>
+          <label class="field">
+            <span>Model utama</span>
+            <select id="model-select"></select>
+          </label>
+          <div class="dialog-actions">
+            <button type="button" class="ghost-button" id="settings-cancel">Batal</button>
+            <button type="submit" class="primary-button">Simpan</button>
+          </div>
+        </form>
+      </dialog>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
